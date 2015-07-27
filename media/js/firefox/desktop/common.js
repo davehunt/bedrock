@@ -39,10 +39,11 @@
 
     $('.ga-section').waypoint(function(dir) {
         // only track scrolling down
+
         if (dir === 'down') {
             w.dataLayer.push({
-                event: 'scroll-tracking',
-                section: $(this).data('ga-label')
+                'event': 'scroll-section',
+                'section': $(this.element).data('ga-label')
             });
         }
     }, {
