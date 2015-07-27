@@ -4,19 +4,19 @@
     var $video = $('#firstrun-video');
 
     $video.on('play', function() {
+
         window.dataLayer.push({
-            'event': 'first-run-video-interaction',
-            'interaction': 'play'
+            'event': 'video-play',
+            'videoTitle': 'First Run Video'
         });
     }).on('pause', function() {
         // is video over?
         // 'pause' event fires just before 'ended', so
         // using 'ended' results in extra pause tracking.
-        var action = ($video[0].currentTime === $video[0].duration) ? 'finish' : 'pause';
-
         window.dataLayer.push({
-            'event': 'first-run-video-interaction',
-            'interaction': action
+            'event': 'video-' + $video[0].currentTime === $video[0].duration ? 'complete' : 'pause',
+            'videoTitle': 'First Run Video'
         });
+
     });
 })(window.jQuery);
