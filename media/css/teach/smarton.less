@@ -1,0 +1,594 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
+
+@import '../sandstone/lib.less';
+
+
+// Set up color themes
+@theme-surveillance: #606ca2;
+@theme-surveillance-dark: darken(@theme-surveillance, 20%);
+@theme-surveillance-light: lighten(@theme-surveillance, 40%);
+
+@theme-security: #5f8ac9;
+@theme-security-dark: darken(@theme-security, 20%);
+@theme-security-light: lighten(@theme-security, 20%);
+
+@theme-tracking: #aa41a4;
+@theme-tracking-dark: darken(@theme-tracking, 20%);
+@theme-tracking-light: lighten(@theme-tracking, 20%);
+
+.theme-color(@color) {
+    body.@{color} {
+        .masthead { background-color: ~'@{@{color}-dark}'; }
+        .smarton-nav { background-color: ~'@{@{color}}'; }
+        .big-list > li:before { background-color: ~'@{@{color}}'; }
+        .callout { border-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}'; }
+        .pullquote { color: ~'@{@{color}-dark}'; }
+        .main .section {
+            h1, h2, h3, h4, h5 { color: ~'@{@{color}-dark}'; }
+            a:link, a:visited, a:hover { color: ~'@{@{color}}'; }
+        }
+        .newsletter { background-color: ~'@{@{color}-dark}'; }
+        .newsletter .button { color: ~'@{@{color}}'; }
+        .tip-list > li:before { color: ~'@{@{color}}'; }
+        .pullchart .number { background-color: ~'@{@{color}-light}'; }
+        .big-list .button-flat { background-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}' !important; }
+        .video iframe { border-color: ~'@{@{color}-light}'; }
+        .graphic-block .graphic { filter: opacity(25%) contrast(200%) drop-shadow(0 0 0 ~'@{@{color}}'); }
+        .block-hero { filter: opacity(25%) contrast(200%) drop-shadow(0 0 0 ~'@{@{color}}'); }
+    }
+}
+
+.theme-color(~"theme-surveillance");
+.theme-color(~"theme-security");
+.theme-color(~"theme-tracking");
+
+
+.columns {
+    list-style: none;
+    .flexbox;
+
+    .col {
+        margin: 0 10px @baseLine;
+        .border-box;
+
+        ul {
+            list-style: disc;
+            margin: 0 0 1em;
+        }
+    }
+
+    &.with-graphic {
+        .span(8);
+        margin-left: -@gridGutterWidth/2;
+    }
+}
+
+.columns-2 .col { width: 50%; }
+.columns-3 .col { width: 33.3%; }
+.columns-4 .col { width: 25%; }
+.columns-5 .col { width: 20%; }
+
+
+// Override defaults
+#outer-wrapper {
+    background: #fff;
+}
+
+#wrapper {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tabzilla {
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+#colophon {
+    background: #ccc;
+    margin: 0;
+
+    .logo a {
+        .at2x('/media/img/sandstone/footer-mozilla-dark.png', 93px, 24px);
+    }
+}
+
+// Blocks
+.section {
+    .clearfix();
+    margin: 0 auto;
+    position: relative;
+}
+
+.section:focus,
+.section:target {
+    outline: 0;
+}
+
+.content {
+    .border-box();
+    .clearfix();
+    margin: 0 auto;
+    padding: @baseLine @gridGutterWidth;
+    position: relative;
+    width: @widthDesktop;
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: @widthTablet;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: @widthMobile;
+    }
+
+    @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+        width: @widthMobileLandscape;
+    }
+}
+
+.main .content {
+    padding: @baseLine (@gridColumnWidth + (@gridGutterWidth * 2.5));
+
+    h4 {
+        .font-size(20px);
+    }
+}
+
+a.go {
+    .trailing-arrow;
+}
+
+.section-title {
+    .font-size(48px);
+    padding-top: 40px;
+    margin: 0 0 .5em;
+    border-top: 3px solid @borderColor;
+}
+
+#ask .section-title {
+    border-top: 0;
+}
+
+.section-intro {
+    .open-sans-light();
+    .font-size(20px);
+}
+
+
+// Landing page topics
+.smarton-topics {
+    list-style: none;
+    margin: 2em 10px;
+    padding: 0 (@gridColumnWidth + (@gridGutterWidth * 2.5));
+    text-align: center;
+    .clearfix;
+
+    > li {
+        .span(3);
+        .border-box;
+        padding: 20px;
+        background: rgba(0,0,0,.1);
+    }
+
+    h2, h3, a {
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .topic-tracking {
+        background: @theme-tracking;
+    }
+
+    .topic-security {
+        background: @theme-security;
+    }
+
+    .topic-surveillance {
+        background: @theme-surveillance;
+    }
+
+}
+
+
+.feature {
+    background: rgba(0,0,0,.1);
+    padding: 20px;
+
+    .smarton-steps {
+        list-style: none;
+        margin: 0;
+
+        li {
+            display: inline-block;
+            margin: 0;
+
+            &:after {
+                content: ' >';
+            }
+
+            &:last-child:after {
+                content: '';
+            }
+        }
+    }
+}
+
+// Header
+.masthead {
+    text-align: center;
+    background: @mozIDGrey;
+    color: #fff;
+
+    .content {
+        padding-top: 40px;
+    }
+
+    .series-title {
+        font-style: italic;
+    }
+
+    .series-intro {
+        .font-size(18px);
+        margin: 0 (@gridColumnWidth + @gridGutterWidth) 1em;
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .series-link a {
+        .trailing-arrow();
+    }
+
+    a {
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+// This is a hack.
+// Todo: Make the template smarter.
+.landing .series-link {
+    display: none;
+}
+
+// Steps
+.smarton-nav {
+    background: #ccc;
+    .clearfix();
+
+    .content {
+        padding: 40px @gridGutterWidth @baseLine;
+    }
+
+    .series-title {
+        display: none;
+        .span(7);
+        margin-top: -2em;
+        padding-left: 5px;
+        .font-size(@largeFontSize);
+
+        a {
+            color: rgba(255, 255, 255, .8);
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: #fff;
+            }
+        }
+    }
+
+    .smarton-title {
+        .span(7);
+        margin-bottom: 0;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    .mozilla-share-cta {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        h3,
+        ul li a {
+            color: rgba(255, 255, 255, .8);
+        }
+
+        ul li a:hover,
+        ul li a:focus,
+        ul li a:active {
+            color: #fff;
+        }
+    }
+
+    &.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+
+        .series-title {
+            display: block;
+        }
+    }
+}
+
+// Progress
+.nav-steps {
+    .font-size(16px);
+    width: (@gridColumnWidth * 5) + (@gridGutterWidth * 4);
+    position: absolute;
+    bottom: @baseLine;
+    left: (@gridColumnWidth * 7) + (@gridGutterWidth * 8);
+
+    ol {
+        margin: 0 0 -@baseLine;
+        .flexbox;
+    }
+
+    li {
+        width: 25%;
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        &.current a {
+            color: #fff;
+            border-bottom: 3px solid #fff;
+            padding-bottom: @baseLine - 3px;
+        }
+    }
+
+    a {
+        .border-box();
+        width: 100%;
+        color: rgba(255, 255, 255, .8);
+        display: inline-block;
+        padding: .5em 10px @baseLine;
+
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 3px solid #fff;
+            padding-bottom: @baseLine - 3px;
+        }
+    }
+}
+
+
+// Pull quotes
+.pullquote {
+    width: @gridColumnWidth * 3.5;
+    padding: @baseLine @gridGutterWidth;
+    float: right;
+    clear: right;
+    margin: 0 -(@gridColumnWidth + (@gridGutterWidth * 2.5)) @baseLine @gridGutterWidth;
+
+    .quote {
+        position: relative;
+        font-style: italic;
+        margin-bottom: .5em;
+        .open-sans-light();
+        .font-size(20px);
+    }
+
+    .attribute {
+        color: rgba(0, 0, 0, .5);
+    }
+}
+
+.callout {
+    border: 3px solid gray;
+    margin: @baseLine @gridColumnWidth;
+    padding: @baseLine @gridGutterWidth;
+    border-radius: 6px;
+    .font-size(@largeFontSize);
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    &.two-up {
+        .span(4);
+    }
+}
+
+
+// Pullcharts
+.pullchart {
+    width: @gridColumnWidth * 3.5;
+    padding: @baseLine @gridGutterWidth;
+    float: right;
+    clear: right;
+    margin: 0 -(@gridColumnWidth + (@gridGutterWidth * 2.5)) @baseLine @gridGutterWidth;
+
+    .number {
+        display: block;
+        margin: 0 auto @baseLine/2 auto;
+        height: 140px;
+        width: 140px;
+        background: rgba(0,0,0,.1);
+        line-height: 140px;
+        letter-spacing: -0.02em;
+        text-align: center;
+        border-radius: 100%;
+        .open-sans-light;
+        .font-size(62px);
+
+        sup {
+            .font-size(24px);
+        }
+    }
+
+    cite {
+        display: block;
+        color: @textColorLight;
+        font-style: italic;
+        .font-size(14px);
+    }
+}
+
+
+// Videos
+.video {
+    margin: 0 0 @baseLine*2;
+    text-align: center;
+
+    iframe {
+        border: 10px solid #eee;
+        border-radius: 3px;
+    }
+}
+
+
+// Graphic blocks
+.graphic-block {
+    padding-left: @gridColumnWidth + (@gridGutterWidth * 2);
+    min-height: @gridColumnWidth + @gridGutterWidth;
+    position: relative;
+    margin: 0 0 2em;
+
+    .graphic {
+        float: left;
+        margin-left: -(@gridColumnWidth + (@gridGutterWidth * 2));
+        max-width: @gridColumnWidth + @gridGutterWidth;
+        border-radius: 100%;
+        filter: opacity(25%) drop-shadow(0 0 0 silver);
+    }
+
+    h2, h3, h4 {
+        .font-size(20px);
+    }
+}
+
+
+// Section hero images
+.block-hero {
+    max-width: (@gridColumnWidth * 3.5) + (@gridGutterWidth * 2);
+    float: right;
+    clear: right;
+    margin: @baseLine -(@gridColumnWidth + (@gridGutterWidth * 2)) @baseLine @gridGutterWidth;
+    border-radius: 100%;
+}
+
+// Tip lists
+.tip-list {
+    list-style: none;
+    margin: 0 0 2em;
+
+    > li {
+        padding-left: 30px;
+        margin: 0 0 1em;
+        position: relative;
+
+        &:before {
+            content: '\2738'; // star
+            display: block;
+            .font-size(30px);
+            line-height: 10px;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            border-radius: 100%;
+            color: gray;
+        }
+    }
+}
+
+// Big numbered lists
+.big-list {
+    margin: (@baseLine * 2) auto;
+    padding: 0;
+
+    > li {
+        position: relative;
+        counter-increment: steps;
+        list-style-type: none;
+        margin: 0 0 @baseLine 0;
+        padding: @baseLine/2 @gridGutterWidth 0 80px;
+        min-height: 60px;
+        .font-size(@largeFontSize);
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &:before {
+            content: counter(steps);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            height: 60px;
+            width: 60px;
+            margin: 0 auto;
+            line-height: 60px;
+            border-radius: 30px;
+            text-align: center;
+            background: gray;
+            color: #fff;
+            .font-size(42px);
+            .open-sans-light();
+        }
+    }
+
+    .button-flat {
+        display: block;
+        padding: .25em 15px;
+        margin-top: .5em;
+        .font-size(12px);
+    }
+}
+
+// Newsletter
+.newsletter {
+    background: @mozIDGrey;
+    margin: 0;
+    color: #fff;
+
+    h3 {
+        color: rgba(255,255,255,.8);
+        text-shadow: none;
+    }
+
+    .billboard {
+        padding: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .button {
+        background: rgba(255,255,255,.8);
+        box-shadow: none;
+        color: @linkBlue;
+        font-weight: normal;
+        text-shadow: none;
+    }
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+        box-shadow: 0 0 5px rgba(0,0,0,.1);
+    }
+
+}
+
