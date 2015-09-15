@@ -647,5 +647,30 @@ def android(request):
         {'variant': variant})
 
 
+class Win10Welcome(l10n_utils.LangFilesMixin, TemplateView):
+
+    def get_template_names(self):
+        # check for variant in querystring for multi-variant testing.
+        variant = self.request.GET.get('v', '')
+        template = 'firefox/win10-welcome.html'
+
+        # ensure variant is one of 5 accepted values and locale is en-US only.
+        if (variant not in ['1', '2', '3', '4', '5'] or self.request.locale != 'en-US'):
+            variant = ''
+
+        if variant == '1':
+            template = 'firefox/win10_variants/variant-1.html'
+        elif variant == '2':
+            template = 'firefox/win10_variants/variant-2.html'
+        elif variant == '3':
+            template = 'firefox/win10_variants/variant-3.html'
+        elif variant == '4':
+            template = 'firefox/win10_variants/variant-4.html'
+        elif variant == '5':
+            template = 'firefox/win10_variants/variant-5.html'
+
+        return [template]
+
+
 class TrackingProtectionTourView(l10n_utils.LangFilesMixin, TemplateView):
     template_name = 'firefox/tracking-protection-tour.html'
