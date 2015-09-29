@@ -26,6 +26,7 @@
         .big-list > li:before { background-color: ~'@{@{color}}'; }
         .callout { border-color: ~'@{@{color}-light}'; color: ~'@{@{color}-dark}'; }
         .pullquote { color: ~'@{@{color}-dark}'; }
+        .section-title { color: ~'@{@{color}-dark}'; }
         .main .section {
             h1, h2, h3, h4, h5 { color: ~'@{@{color}-dark}'; }
             a:link, a:visited, a:hover { color: ~'@{@{color}}'; }
@@ -490,22 +491,28 @@ a.go {
     margin: 0 0 2em;
 
     > li {
+        margin-left: 0;
+    }
+/*
+    > li {
         padding-left: 30px;
         margin: 0 0 1em;
         position: relative;
 
         &:before {
-            content: '\2738'; // star
+//            content: '\2738'; // star
+            content: '\261B'; // manicule
             display: block;
-            .font-size(30px);
+            .font-size(24px);
             line-height: 10px;
             position: absolute;
-            left: 0;
+            left: -2px;
             top: 2px;
             border-radius: 100%;
             color: gray;
         }
     }
+*/
 }
 
 // Big numbered lists
@@ -559,9 +566,13 @@ a.go {
     margin: 0;
     color: #fff;
 
-    h3 {
-        color: rgba(255,255,255,.8);
+    h3, h4 {
+        color: rgba(255, 255, 255, .8);
         text-shadow: none;
+    }
+
+    h4 {
+        .font-size(18px);
     }
 
     .billboard {
@@ -571,12 +582,22 @@ a.go {
         box-shadow: none;
     }
 
+    input[type='email'] {
+        .font-size(@largeFontSize);
+        padding: .5em 15px;
+    }
+
     .button {
-        background: rgba(255,255,255,.8);
+        background: rgba(255, 255, 255, .8);
         box-shadow: none;
         color: @linkBlue;
         font-weight: normal;
         text-shadow: none;
+        .font-size(18px);
+    }
+
+    a {
+        color: #fff;
     }
 
     &.fixed {

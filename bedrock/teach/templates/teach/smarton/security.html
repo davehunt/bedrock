@@ -104,30 +104,27 @@
       <h2 class="section-title">{{ _('Build your safety net') }}</h2>
       <p class="section-intro">{{ _('Improve your security online with these safety measures recommended by Mozilla policy pros.') }}</p>
 
-      <div class="graphic-block">
-        <img class="graphic" src="http://lorempixel.com/g/140/140/food" alt="">
-        <h3>{{ _('Look both ways') }}</h3>
-        <p>{{ _('The first and most important thing is just to pay close attention to where and when you click.') }}</p>
-      </div>
+      <img class="block-hero" src="http://lorempixel.com/g/240/240/food" alt="">
+      <h3>{{ _('Look both ways') }}</h3>
+      <p>{{ _('The first and most important thing is just to pay close attention to where and when you click.') }}</p>
 
-      <div class="graphic-block">
-        <img class="graphic" src="http://lorempixel.com/g/140/140/cats" alt="">
-        <h3>{{ _('Trust your gut') }}</h3>
-        <p>
-          {{ _('If a link or download doesn’t feel quite right, it probably isn’t.') }}
-          {{ _('Make sure you install programs only from verified trusted sources, and don’t click on anything that looks even remotely suspicious – even when you think you know the source.') }}
-        </p>
-      </div>
-
-      <div class="graphic-block">
-        <img class="graphic" src="http://lorempixel.com/g/140/140/animals" alt="">
-        <h3>{{ _('Watch yourself in public') }}</h3>
-        <p>
-          {{ _('When you navigate the Web on a public WiFi network, anyone who chooses to snoop can see some or all of your activity.') }}
-          {{ _('So avoid sensitive activities when surfing in public.') }}
-          {{ _('And before you share any kind of info anywhere online, think about how it might make you vulnerable.') }}
-        </p>
-      </div>
+      <ul class="tip-list">
+        <li>
+          <h4>{{ _('Trust your gut') }}</h4>
+          <p>
+            {{ _('If a link or download doesn’t feel quite right, it probably isn’t.') }}
+            {{ _('Make sure you install programs only from verified trusted sources, and don’t click on anything that looks even remotely suspicious – even when you think you know the source.') }}
+          </p>
+        </li>
+        <li>
+          <h4>{{ _('Watch yourself in public') }}</h4>
+          <p>
+            {{ _('When you navigate the Web on a public WiFi network, anyone who chooses to snoop can see some or all of your activity.') }}
+            {{ _('So avoid sensitive activities when surfing in public.') }}
+            {{ _('And before you share any kind of info anywhere online, think about how it might make you vulnerable.') }}
+          </p>
+        </li>
+      </ul>
 
       <img class="block-hero" src="http://lorempixel.com/g/240/240/abstract" alt="">
       <h3>{{ _('Lock your doors') }}</h3>
@@ -224,9 +221,6 @@
             <li><a href="https://www.avast.com/">Avast</a></li>
             <li><a href="http://www.bitdefender.com/solutions/free.html">BitDefender</a></li>
           </ul>
-
-          <h4>{{ _('Video chat') }}</h4>
-          <p>{{ _('<a href="{url}">Firefox Hello</a> is a simple and free video conversation tool that comes with an extra level of security.').format(url=url('firefox.hello'))|safe }}</p>
         </li>
         <li class="col">
           <h4>{{ _('Firefox Add-ons') }}</h4>

@@ -186,7 +186,14 @@
           <h4>{{ _('Don’t use a single password everywhere.') }}</h4>
           <p>
             {{ _('Would you use the same key for your front door, your car, and your safety deposit box? Probably not.') }}
-            {{ _('Keep track with <a href="{url}">a password manager</a> instead.').format(url='https://support.mozilla.org/kb/password-manager-remember-delete-change-passwords')|safe }}
+            {{ _('Keep track with a password manager instead.') }}
+            {% trans  firefox='https://support.mozilla.org/kb/password-manager-remember-delete-change-passwords',
+                      chrome='https://support.google.com/chrome/answer/95606',
+                      ie='http://windows.microsoft.com/en-us/internet-explorer/fill-in-forms-remember-passwords-autocomplete',
+                      safari='https://support.apple.com/kb/PH19249',
+                      opera='http://help.opera.com/Windows/12.00/en/password.html' %}
+              See instructions for <a href="{firefox}">Firefox</a>, <a href="{chrome}">Chrome</a>, <a href="{ie}">Internet Explorer</a>, <a href="{safari}">Safari</a> and <a href="{opera}">Opera</a>.
+            {% endtrans %}
           </p>
         </li>
         <li>
@@ -203,40 +210,22 @@
       <p>{{ _('Encryption is a bit like scrambling a frequency: it turns information into codes that can only be read if you have the right keys.') }}</p>
       <p>{{ _('No software provides perfect protection from spying, but Mozilla programmers recommend these easy encryption tools to take your online security beyond basic.') }}</p>
 
+      <h4>{{ _('Phone apps') }}</h4>
+      <p>{{ _('These apps use encryption to secure your phone calls, texts, picture and video communications.') }}</p>
+
       <ul class="columns columns-2">
         <li class="col">
-          <h4>{{ _('Phone apps') }}</h4>
-          <p>{{ _('These apps use encryption to secure your phone calls, texts, picture and video communications.') }}</p>
-
           <h5>{{ _('Android') }}</h5>
           <ul>
             <li><a href="https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms" class="go">{{ _('TextSecure') }}</a></li>
             <li><a href="https://play.google.com/store/apps/details?id=org.thoughtcrime.redphone" class="go">{{ _('Redphone') }}</a></li>
           </ul>
-
+        </li>
+        <li class="col">
           <h5>{{ _('iOS') }}</h5>
           <ul>
             <li><a href="https://itunes.apple.com/app/signal-private-messenger/id874139669" class="go">{{ _('Signal') }}</a></li>
           </ul>
-
-          <h4>{{ _('Video chat') }}</h4>
-          <p>{{ _('<a href="{url}">Firefox Hello</a> is a simple and free video conversation tool that comes with an added level of security.').format(url=url('firefox.hello'))|safe }}</p>
-        </li>
-        <li class="col">
-          <h4>{{ _('Browser' ) }}</h4>
-          <p>{{ _('Beef up your browser to help keep your activity safe.') }}</p>
-
-          <h5>{{ _('Firefox') }}</h5>
-          <p>{{ _('Firefox lets you <a href="{url}">save your passwords</a> so you can pick more obscure, secure ones.').format(url='https://support.mozilla.org/kb/security-and-passwords-settings#w_passwords')|safe }}</p>
-
-          <p>
-          {% trans chrome='https://support.google.com/chrome/answer/95606',
-                      ie='#TODO',
-                      safari='https://support.apple.com/kb/PH19249',
-                      opera='http://help.opera.com/Windows/12.00/en/password.html' %}
-            See instructions on password management in <a href="{chrome}">Chrome</a>, <a href="{ie}">Internet Explorer</a>, <a href="{safari}">Safari</a> and <a href="{opera}">Opera</a>.
-          {% endtrans %}
-          </p>
         </li>
       </ul>
 
