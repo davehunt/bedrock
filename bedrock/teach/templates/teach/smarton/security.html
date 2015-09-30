@@ -250,22 +250,25 @@
 
       <ol class="big-list">
         <li>
-          <p>
-            {{ _('How many online passwords do you have?') }}
-            <button type="button" class="button-flat">Share</button>
-          </p>
+          <p>{{ _('How many online passwords do you have?') }}</p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('How many online passwords do you have?'), 'chat-share-q1', 'sky micro') }}
+        </li>
+        <li>
+          <p>{{ _('What kind of security tips and tricks do you use online?') }}</p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('What kind of security tips and tricks do you use online?'), 'chat-share-q2', 'sky micro') }}
         </li>
         <li>
           <p>
-            {{ _('What kind of security tips and tricks do you use online?') }}
-            <button type="button" class="button-flat">Share</button>
+            {{ _('On a scale from 1 to 10, how safe do you feel online?') }}
+            {{ _('Is it always clear to you whether or not your activities are secure?') }}
           </p>
-        </li>
-        <li>
-          <p>
-            {{ _('On a scale from 1 to 10, how safe do you feel online? Is it always clear to you whether or not your activities are secure?') }}
-            <button type="button" class="button-flat">Share</button>
-          </p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('On a scale from 1 to 10, how safe do you feel online?'), 'chat-share-q3', 'sky micro') }}
         </li>
       </ol>
 

@@ -102,7 +102,7 @@
 
 // Blocks
 .section {
-    .clearfix();
+    .clearfix;
     margin: 0 auto;
     position: relative;
 }
@@ -113,8 +113,8 @@
 }
 
 .content {
-    .border-box();
-    .clearfix();
+    .border-box;
+    .clearfix;
     margin: 0 auto;
     padding: @baseLine @gridGutterWidth;
     position: relative;
@@ -157,7 +157,7 @@ a.go {
 }
 
 .section-intro {
-    .open-sans-light();
+    .open-sans-light;
     .font-size(20px);
 }
 
@@ -236,7 +236,7 @@ a.go {
 
     .series-intro {
         .font-size(18px);
-        margin: 0 (@gridColumnWidth + @gridGutterWidth) 1em;
+        margin: 0 (@gridColumnWidth*2 + @gridGutterWidth*2) 1em;
         color: rgba(255, 255, 255, .8);
     }
 
@@ -524,7 +524,7 @@ a.go {
         position: relative;
         counter-increment: steps;
         list-style-type: none;
-        margin: 0 0 @baseLine 0;
+        margin: 0 0 @baseLine*2 0;
         padding: @baseLine/2 @gridGutterWidth 0 80px;
         min-height: 60px;
         .font-size(@largeFontSize);
@@ -558,6 +558,10 @@ a.go {
         margin-top: .5em;
         .font-size(12px);
     }
+
+    .mozilla-share-cta {
+        margin-top: -.5em;
+    }
 }
 
 // Newsletter
@@ -569,6 +573,7 @@ a.go {
     h3, h4 {
         color: rgba(255, 255, 255, .8);
         text-shadow: none;
+        margin: 0 0 .25em;
     }
 
     h4 {

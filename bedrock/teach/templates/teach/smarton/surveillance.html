@@ -265,16 +265,22 @@
 
       <ol class="big-list">
         <li>
-          {{ _('Which would you be more comfortable sharing with the government: your checking account number or your DNA profile?') }}
-          <button type="button" class="button-flat">Share</button>
+          <p>{{ _('Which would you be more comfortable sharing with the government: your checking account number or your DNA profile?') }}</p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('Which would you be more comfortable sharing with the government: your checking account number or your DNA profile?'), 'chat-share-q1', 'sky micro') }}
         </li>
         <li>
-          {{ _('If you had a digital lockbox that no one could see but you, what would you put in it?') }}
-          <button type="button" class="button-flat">Share</button>
+          <p>{{ _('If you had a digital lockbox that no one could see but you, what would you put in it?') }}</p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('If you had a digital lockbox that no one could see but you, what would you put in it?'), 'chat-share-q2', 'sky micro') }}
         </li>
         <li>
-          {{ _('Have you stopped sharing certain things online since you found out about mass government surveillance?') }}
-          <button type="button" class="button-flat">Share</button>
+          <p>{{ _('Have you stopped sharing certain things online since you found out about mass government surveillance?') }}</p>
+          {% set share_urls = { 'twitter': 'https://mzl.la/foo', 'googleplus': 'https://mzl.la/foo', 'facebook': 'https://mzl.la/foo' } -%}
+          {% set cta_text = _('Share') %}
+          {{ share_cta(cta_text, share_urls, _('Have you stopped sharing certain things online since you found out about mass government surveillance?'), 'chat-share-q3', 'sky micro') }}
         </li>
       </ol>
 
