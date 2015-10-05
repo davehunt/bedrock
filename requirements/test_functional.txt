@@ -1,0 +1,8 @@
+# sha256: bwGLPxbC1cSQ-u-cot0Pk4LpMPi3gDp1cVGMTDQE78o
+pytest==2.8.1
+
+# sha256: 529Ztp_AzN6LlHcoSn-3JqJKIfX6rmqzBZOS6LvYiqc
+pytest-xdist==1.13.1
+
+# sha256: oL_wPRdZXCXS6qTLHMowg5K7qAR4TF_Nv60TN6i4qhc
+pytest-selenium==1.0b1

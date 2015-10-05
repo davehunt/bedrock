@@ -2,6 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+TIMEOUT = 10
+
 
 class Page(object):
 
@@ -10,7 +12,7 @@ class Page(object):
     def __init__(self, base_url, selenium):
         self.base_url = base_url
         self.selenium = selenium
-        self.timeout = 10
+        self.timeout = TIMEOUT
 
     def open(self):
         self.selenium.get(self.url)
@@ -25,3 +27,16 @@ class Page(object):
 
     def wait_for_page_to_load(self):
         pass
+
+
+class PageRegion(object):
+
+    _root_locator = None
+
+    def __init__(self, selenium, root=None):
+        self.selenium = selenium
+        self.timeout = TIMEOUT
+        self.root = root
+
+        if self.root is None and self._root_locator is not None:
+            self.root = self.selenium.find_element(*self._root_locator)
