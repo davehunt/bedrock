@@ -22,13 +22,13 @@ class BasePage(Page):
         @property
         def language(self):
             el = self.root.find_element(*self._language_locator)
-            return Select(el).first_selected_option.text
+            return Select(el).first_selected_option.get_attribute('value')
 
         @property
         def languages(self):
             el = self.root.find_element(*self._language_locator)
-            return [option.text for option in Select(el).options]
+            return [o.get_attribute('value') for o in Select(el).options]
 
         def select_language(self, value):
             el = self.root.find_element(*self._language_locator)
-            Select(el).select_by_visible_text(value)
+            Select(el).select_by_value(value)

@@ -6,17 +6,16 @@ import random
 
 import pytest
 
-from pages.home import HomePage
+from ..pages.home import HomePage
 
 
 @pytest.mark.nondestructive
 def test_change_language(base_url, selenium):
     page = HomePage(base_url, selenium).open()
-    title = selenium.title
     initial = page.footer.language
     available = page.footer.languages
     available.remove(initial)  # avoid selecting the same language
     new = random.choice(available)  # pick a random lanugage
     page.footer.select_language(new)
-    assert title != selenium.title, 'Page title has not changed'
+    assert new in selenium.current_url, 'Language is not in URL'
     assert new == page.footer.language, 'Language has not been selected'
