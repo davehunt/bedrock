@@ -17,6 +17,17 @@ def capabilities(capabilities):
 
 @pytest.fixture
 def selenium(request, selenium):
+    capabilities = selenium.capabilities
+    if request.keywords.get('include') is not None:
+        include = request.keywords.get('include').args[0]
+        if not all(item in capabilities.items() for item in include.items()):
+            message = 'Required capabilities {0} not found in {1}'.format(include, capabilities)
+            pytest.skip(message)
+    if request.keywords.get('exclude') is not None:
+        exclude = request.keywords.get('exclude').args[0]
+        if any(item in capabilities.items() for item in exclude.items()):
+            message = 'Prohibited capabilities {0} found in {1}'.format(exclude, capabilities)
+            pytest.skip(message)
     viewport = VIEWPORT['desktop']
     if request.keywords.get('viewport') is not None:
         viewport = VIEWPORT[request.keywords.get('viewport').args[0]]
